@@ -37,7 +37,21 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required|max:255',
+            'status' => 'required',
+            'user_id' => 'required'
+          ]);
+
+          $newItem = new Item([
+            'title' => $request->get('title'),
+            'status' => $request->boolean('status'),
+            'user_id' => $request->integer('user_id'),
+          ]);
+
+          $newItem->save();
+
+          return response()->json($newItem);
     }
 
     /**
@@ -48,7 +62,8 @@ class ItemController extends Controller
      */
     public function show($id)
     {
-        //
+        $item = Item::findOrFail($id);
+        return response()->json($item);
     }
 
     /**
@@ -71,7 +86,20 @@ class ItemController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $item = Item::findOrFail($id);
+
+        $request->validate([
+            'title' => 'required|max:255',
+            'status' => 'required',
+            'user_id' => 'required'
+        ]);
+
+        $item->title = $request->get('title');
+        $item->status = $request->get('status');
+
+        $item->save();
+
+        return response()->json($item);
     }
 
     /**
@@ -82,6 +110,9 @@ class ItemController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = Item::findOrFail($id);
+        $item->delete();
+
+        return response()->json($item::all());
     }
 }
