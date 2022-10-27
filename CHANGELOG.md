@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 - Api routes for Todo items to use auth
+- Itemcontroller to use item resource
 
 ### Fixed
 - Fixed item controller

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Item;
+use App\Http\Resources\Item as ItemResource;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
@@ -16,7 +17,7 @@ class ItemController extends Controller
     public function index()
     {
         $items = Item::all();
-        return response()->json($items);
+        return ItemResource::collection($items);
     }
 
     /**
@@ -51,7 +52,8 @@ class ItemController extends Controller
 
           $newItem->save();
 
-          return response()->json($newItem);
+          //return response()->json( new ItemResource($newItem));
+          return new ItemResource($newItem);
     }
 
     /**
@@ -63,7 +65,7 @@ class ItemController extends Controller
     public function show($id)
     {
         $item = Item::findOrFail($id);
-        return response()->json($item);
+        return new ItemResource($item);
     }
 
     /**
@@ -91,7 +93,6 @@ class ItemController extends Controller
         $request->validate([
             'title' => 'required|max:255',
             'status' => 'required',
-            'user_id' => 'required'
         ]);
 
         $item->title = $request->get('title');
@@ -99,7 +100,8 @@ class ItemController extends Controller
 
         $item->save();
 
-        return response()->json($item);
+        //return response()->json($item);
+        return new ItemResource($item);
     }
 
     /**
@@ -113,6 +115,6 @@ class ItemController extends Controller
         $item = Item::findOrFail($id);
         $item->delete();
 
-        return response()->json($item::all());
+        return new ItemResource($item::all());
     }
 }
