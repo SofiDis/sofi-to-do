@@ -9,8 +9,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 - Created Item resource
+- Created AuthController
 
 ### Changed
+- Api routes for Todo items to use auth
 
 ### Fixed
 - Fixed item controller
