@@ -96,7 +96,7 @@ class ItemController extends Controller
         ]);
 
         $item->title = $request->get('title');
-        $item->status = $request->get('status');
+        $item->status = $request->boolean('status');
 
         $item->save();
 

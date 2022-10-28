@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 - Fixed item controller
 - Fixed item seeder
+- Fixed updated item route
 
 ## [0.2.0] - 2022-10-26
 
