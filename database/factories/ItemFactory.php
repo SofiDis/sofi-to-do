@@ -28,8 +28,10 @@ class ItemFactory extends Factory
     {
         return [
             'title' => $this->faker->title,
-            'user_id' => $this->faker->randomDigit,
-            'status' => $this->faker->boolean()
+            'user_id' => $this->faker->numberBetween($min = 1, $max = 10),
+            'project_id' => $this->faker->numberBetween($min = 1, $max = 10),
+            'parent_id' => $this->faker->numberBetween($min = 1, $max = 10),
+            'status' => $this->faker->numberBetween($min = 0, $max = 1),
         ];
     }
 }

@@ -15,11 +15,11 @@ class Item extends JsonResource
     public function toArray($request)
     {
         return parent::toArray($request);
-        return [
+        /* return [
             'id' => $this->id,
             'title' => $this->title,
             'status' => $this->status,
             'user_id' => $this->user_id,
-        ];
+        ]; */
     }
 }

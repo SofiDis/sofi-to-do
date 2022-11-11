@@ -12,6 +12,8 @@ class Item extends Model
     protected $fillable = [
         'title',
         'status',
-        'user_id'
+        'user_id',
+        'project_id',
+        'parent_id'
       ];
 }

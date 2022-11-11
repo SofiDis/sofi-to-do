@@ -17,8 +17,10 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('title');
-            $table->boolean('status');
+            $table->integer('status');
             $table->integer('user_id');
+            $table->integer('project_id');
+            $table->integer('parent_id');
         });
     }
 
